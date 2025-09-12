@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Skiirama.Core.Bootstrap
+namespace Assets.Scripts.Skiirama.Core.Loaders
 {
     public class ApplicationLoader : MonoBehaviour
     {

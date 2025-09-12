@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Assets.Scripts.Skiirama.Core.Common
 {
     public enum GameState
@@ -12,6 +10,6 @@ namespace Assets.Scripts.Skiirama.Core.Common
         Fail,
         Restart,
         Transition,
-        Quit,
+        Quit
     }
 }

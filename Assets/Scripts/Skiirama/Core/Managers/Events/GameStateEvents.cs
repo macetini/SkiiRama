@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace Assets.Scripts.Skiirama.Core.Managers.Events
 {
-    public class GameStateEvents : MonoBehaviour
+    public class GameStateEvents
     {
         public delegate void GameStatesEvent();
 

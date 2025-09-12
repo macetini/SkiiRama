@@ -8,7 +8,7 @@ namespace Assets.Scripts.Skiirama.Core.Managers
 {
     public class GameStateManager : MonoBehaviour
     {
-        public GameState CurrentState = GameState.Quit;
+        public GameState CurrentState = GameState.Transition;
         public GameState PreviousState { get; private set; }
 
         public bool Main => CurrentState == GameState.Main;
@@ -26,15 +26,16 @@ namespace Assets.Scripts.Skiirama.Core.Managers
         void Awake()
         {
             stateHandlers.Add(GameState.Main, GameStateEvents.InvokeSetMainStateEvent);
+            stateHandlers.Add(GameState.Transition, GameStateEvents.InvokeSetTransitionStateEvent);
+            
             stateHandlers.Add(GameState.Start, GameStateEvents.InvokeSetStartStateEvent);
+
             stateHandlers.Add(GameState.Active, GameStateEvents.InvokeSetActiveStateEvent);
             stateHandlers.Add(GameState.Immobile, GameStateEvents.InvokeSetImmobileStateEvent);
             stateHandlers.Add(GameState.Pass, GameStateEvents.InvokeSetPassStateEvent);
             stateHandlers.Add(GameState.Fail, GameStateEvents.InvokeSetFailStateEvent);
             stateHandlers.Add(GameState.Restart, GameStateEvents.InvokeSetResetStateEvent);
-            stateHandlers.Add(GameState.Transition, GameStateEvents.InvokeSetTransitionStateEvent);
             stateHandlers.Add(GameState.Quit, GameStateEvents.InvokeSetQuitStateEvent);
-
         }
 
         public GameState GetCurrentState()

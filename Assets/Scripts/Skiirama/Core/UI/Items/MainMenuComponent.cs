@@ -1,11 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Skiirama.Core.UI.Items
 {
-    public class MainMenuComponent : AbstractComponent
+    [RequireComponent(typeof(Animator))]
+    public class MainMenuComponent : MonoBehaviour
     {
-        [SerializeField]
-        private Button startGameButton;
+        private Animator animator;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        internal void FadeIn()
+        {
+            Debug.Log("FadeIn Main Menu animation started.");
+            animator.SetTrigger("FadeIn");
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Skiirama.Core.Managers.Events
+namespace Assets.Scripts.Skiirama.Core.Common.Events
 {
     public class GameStateEvents
     {

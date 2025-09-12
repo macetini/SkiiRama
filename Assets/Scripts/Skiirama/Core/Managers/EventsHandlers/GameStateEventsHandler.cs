@@ -1,14 +1,11 @@
-using Assets.Scripts.Skiirama.Core.Loaders;
-using Assets.Scripts.Skiirama.Core.Managers.Events;
+using Assets.Scripts.Skiirama.Core.Common.Events;
+using Assets.Scripts.Skiirama.Core.Common.State;
 using UnityEngine;
 
 namespace Assets.Scripts.Skiirama.Core.Managers.EventsHandlers
 {
     public class GameStateEventsHandler : MonoBehaviour
     {
-        [SerializeField]
-        private SceneLoader sceneLoader;
-
         void OnEnable()
         {
             GameStateEvents.OnMainStateEvent += HandleMainStateEvent;
@@ -39,14 +36,13 @@ namespace Assets.Scripts.Skiirama.Core.Managers.EventsHandlers
 
         private void HandleMainStateEvent()
         {
-            Debug.Log("Main State Event Handler.");
-            sceneLoader.LoadMainMenuScene();
+            Debug.LogFormat("{0}: {1}", name, GameState.Main);
+            GameEvents.InvokeMainGameEvent();
         }
 
         private void HandleTransitionStateEvent()
         {
             Debug.Log("Transition State Event Handler.");
-            sceneLoader.LoadNextLevel();
         }
 
         private void HandleResetStateEvent()

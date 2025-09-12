@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Skiirama.Core.Common
+namespace Assets.Scripts.Skiirama.Core.Common.State
 {
     public enum GameState
     {

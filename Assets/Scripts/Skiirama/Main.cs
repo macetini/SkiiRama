@@ -1,18 +1,25 @@
+using Assets.Scripts.Skiirama.Core.Loaders;
 using Assets.Scripts.Skiirama.Core.Managers;
 using UnityEngine;
 
-public class Main : MonoBehaviour
+namespace Assets.Scripts.Skiirama
 {
-    [SerializeField]
-    private GameStateManager gameStateManager;
-
-    void Start()
+    public class Main : MonoBehaviour
     {
-        Initialize();
+        [SerializeField]
+        private GameStateManager gameStateManager;
+
+        [SerializeField]
+        private SceneLoader sceneLoader;
+
+        void Start()
+        {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            gameStateManager.SetMain();
+        }
     }
-
-    public void Initialize()
-    {
-        gameStateManager.SetMain();
-    } 
 }

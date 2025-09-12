@@ -1,4 +1,4 @@
-using Assets.Scripts.Skiirama.Core.Common;
+using Assets.Scripts.Skiirama.Core.Common.State;
 using UnityEngine;
 
 namespace Assets.Scripts.Skiirama.Core.Managers

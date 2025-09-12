@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Assets.Scripts.Skiirama.Core.Common;
-using Assets.Scripts.Skiirama.Core.Managers.Events;
+using Assets.Scripts.Skiirama.Core.Common.Events;
+using Assets.Scripts.Skiirama.Core.Common.State;
 using UnityEngine;
 
 namespace Assets.Scripts.Skiirama.Core.Managers

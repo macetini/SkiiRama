@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 94244988}
   - component: {fileID: 94244987}
   m_Layer: 5
-  m_Name: Ttitle
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,8 +344,11 @@ GameObject:
   m_Component:
   - component: {fileID: 222085820}
   - component: {fileID: 222085821}
+  - component: {fileID: 222085822}
+  - component: {fileID: 222085823}
+  - component: {fileID: 222085824}
   m_Layer: 5
-  m_Name: VGroup
+  m_Name: LoadingComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,6 +402,54 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &222085822
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222085819}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &222085823
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222085819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b0bae0bd7ff33941a8e8767bd2e6315, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &222085824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222085819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b918ad5483da844a8783cddaff3ab85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Skiirama.Core.UI.Items.LoadingComponent
+  loadingText: {fileID: 323725719}
+  loadingSlider: {fileID: 2048160224}
 --- !u!1 &323725717
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +462,7 @@ GameObject:
   - component: {fileID: 323725720}
   - component: {fileID: 323725719}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ProgressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,8 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64177ee1072649e4ea8cfa411f31c583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Skiirama.Bootstrap.GameLoader
-  loadingText: {fileID: 323725719}
-  loadingSlider: {fileID: 2048160224}
+  loadingComponent: {fileID: 222085824}
 --- !u!1 &700526076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,7 +1245,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1713223507}
   m_FillRect: {fileID: 1031998496}
   m_HandleRect: {fileID: 1713223506}

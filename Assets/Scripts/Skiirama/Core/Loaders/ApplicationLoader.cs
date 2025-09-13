@@ -1,52 +1,63 @@
 using System.Collections;
-using TMPro;
+using Assets.Scripts.Skiirama.Core.UI.Items;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Skiirama.Core.Loaders
 {
     public class ApplicationLoader : MonoBehaviour
     {
-        public TextMeshProUGUI loadingText;
-        public Slider loadingSlider;
+        [SerializeField]
+        private LoadingComponent loadingComponent;
+
+        private AsyncOperation asyncLoad;
+
+        private const string APPLICATION_SCENE_NAME = "Application";
 
         void Start()
         {
             Debug.Log("Application started.");
-            StartCoroutine(LoadAsyncScene("Application"));
+            StartCoroutine(LoadAsyncApplicationScene());
         }
 
-        IEnumerator LoadAsyncScene(string sceneName)
+        void OnEnable()
         {
-            Debug.LogFormat("Loading Scene: '{0}'.", sceneName);
+            loadingComponent.FadeOutAnimationFinishedEvent += FadeOutAnimationFinishedEventHandler;
+        }
 
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        void OnDisable()
+        {
+            loadingComponent.FadeOutAnimationFinishedEvent -= FadeOutAnimationFinishedEventHandler;
+        }
 
+        private IEnumerator LoadAsyncApplicationScene()
+        {
+            Debug.LogFormat("Loading Scene: '{0}'.", APPLICATION_SCENE_NAME);
+
+            asyncLoad = SceneManager.LoadSceneAsync(APPLICATION_SCENE_NAME);
             asyncLoad.allowSceneActivation = false;
 
-            while (!asyncLoad.isDone)
+            if (asyncLoad.progress < 0.9)
             {
                 float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-
-                if (asyncLoad.progress >= 0.9f)
-                {
-                    Debug.LogFormat("Scene '{0}' 90% loaded, allowing scene activation.", sceneName);
-                    asyncLoad.allowSceneActivation = true;
-                }
-
-                loadingSlider.value = progress;
+                loadingComponent.SliderProgress = progress;
 
                 string progressText = Mathf.RoundToInt(progress * 100) + "%";
-                loadingText.text = progressText;
+                loadingComponent.ProgressText = progressText;
 
                 Debug.LogFormat("Scene load progress: {0}.", progressText);
 
                 yield return null;
             }
 
-            Debug.LogFormat("Scene '{0}' loaded.", sceneName);
+            Debug.Log("Scene 90% loaded, closing animation started.");
+            loadingComponent.StartFadeOutAnimation();
+        }
+
+        private void FadeOutAnimationFinishedEventHandler()
+        {
+            Debug.Log("Scene closing animation finished, starting next scene activation.");
+            asyncLoad.allowSceneActivation = true;
         }
     }
-
 }

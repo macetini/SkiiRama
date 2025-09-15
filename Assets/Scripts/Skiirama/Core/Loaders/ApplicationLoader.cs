@@ -50,8 +50,11 @@ namespace Assets.Scripts.Skiirama.Core.Loaders
                 yield return null;
             }
 
+            loadingComponent.SliderProgress = 1f;                
+            loadingComponent.ProgressText = "100%";
+
             Debug.Log("Scene 90% loaded, closing animation started.");
-            loadingComponent.StartFadeOutAnimation();
+            loadingComponent.FadeOut();
         }
 
         private void FadeOutAnimationFinishedEventHandler()

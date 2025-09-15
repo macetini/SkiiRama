@@ -14,6 +14,7 @@ namespace Assets.Scripts.Skiirama.Core.UI.Items
         internal void ShowMainMenu()
         {
             Debug.Log("Show main menu.");
+            loadingComponent.FadeIn();
             //mainMenuComponent.FadeIn();
         }
     }

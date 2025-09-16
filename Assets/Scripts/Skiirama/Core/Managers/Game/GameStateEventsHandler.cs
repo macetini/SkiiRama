@@ -1,8 +1,7 @@
-using Assets.Scripts.Skiirama.Core.Common.Events;
 using Assets.Scripts.Skiirama.Core.Common.State;
 using UnityEngine;
 
-namespace Assets.Scripts.Skiirama.Core.Managers.EventsHandlers
+namespace Assets.Scripts.Skiirama.Core.Managers.Game
 {
     public class GameStateEventsHandler : MonoBehaviour
     {
@@ -37,7 +36,7 @@ namespace Assets.Scripts.Skiirama.Core.Managers.EventsHandlers
         private void HandleMainStateEvent()
         {
             Debug.LogFormat("{0}: {1}", name, GameState.Main);
-            GameEvents.InvokeMainGameEvent();
+            //MessageBus.TriggerEvent(GameState.Main);
         }
 
         private void HandleTransitionStateEvent()

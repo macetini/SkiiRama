@@ -1,4 +1,4 @@
-using System;
+using Assets.Scripts.Skiirama.Core.Managers.UI;
 using Assets.Scripts.Skiirama.Core.UI.Common;
 using UnityEngine;
 
@@ -7,31 +7,24 @@ namespace Assets.Scripts.Skiirama.Core.UI.Items
     public class RootComponent : FadableComponent
     {
         [SerializeField]
-        private LoadingComponent loadingComponent;
+        internal LoadingComponent loadingComponent;
 
         [SerializeField]
-        private FadableComponent mainMenuComponent;
+        internal FadableComponent mainMenuComponent;
 
         void OnEnable()
         {
-            loadingComponent.FadeInAnimationFinishedEvent += LoadingFadeInFinishedEventHandler;
+            loadingComponent.FadeInAnimationFinishedEvent += UIEvents.InvokeLoadingComponentShowAnimationEnd;
         }
 
         void OnDisable()
         {
-            loadingComponent.FadeInAnimationFinishedEvent -= LoadingFadeInFinishedEventHandler;
+            loadingComponent.FadeInAnimationFinishedEvent -= UIEvents.InvokeLoadingComponentShowAnimationEnd;
         }
 
-        private void LoadingFadeInFinishedEventHandler()
+        internal void ShowLoadingComponent()
         {
-            Debug.Log("Loading component fade in finished.");
-            //loadingComponent.FadeOut();
-            //mainMenuComponent.FadeIn();
-        }
-
-        internal void OnMainState()
-        {
-            Debug.Log("Loading component fade in.");
+            Debug.LogFormat("{0}: {1}", name, "Showing Loading Component.");
             loadingComponent.FadeIn();
         }
     }

@@ -1,7 +1,6 @@
-using Assets.Scripts.Skiirama.Core.Common.Events;
 using UnityEngine;
 
-namespace Assets.Scripts.Skiirama.Core.Managers.EventsHandlers
+namespace Assets.Scripts.Skiirama.Core.Managers.Game
 {
     public class GameEventsHandler : MonoBehaviour
     {

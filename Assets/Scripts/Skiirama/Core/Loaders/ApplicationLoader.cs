@@ -8,7 +8,7 @@ namespace Assets.Scripts.Skiirama.Core.Loaders
     public class ApplicationLoader : MonoBehaviour
     {
         private const string APPLICATION_SCENE_NAME = "Application";
-        
+
         [SerializeField]
         private LoadingComponent loadingComponent;
 
@@ -51,7 +51,7 @@ namespace Assets.Scripts.Skiirama.Core.Loaders
                 yield return null;
             }
 
-            loadingComponent.SliderProgress = 1f;                
+            loadingComponent.SliderProgress = 1f;
             loadingComponent.ProgressText = "100%";
 
             Debug.Log("Scene 90% loaded, closing animation started.");

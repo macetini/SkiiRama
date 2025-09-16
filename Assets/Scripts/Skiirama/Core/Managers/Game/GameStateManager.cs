@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Assets.Scripts.Skiirama.Core.Common.Events;
 using Assets.Scripts.Skiirama.Core.Common.State;
 using UnityEngine;
 
-namespace Assets.Scripts.Skiirama.Core.Managers
+namespace Assets.Scripts.Skiirama.Core.Managers.Game
 {
     public class GameStateManager : MonoBehaviour
     {
@@ -98,15 +97,20 @@ namespace Assets.Scripts.Skiirama.Core.Managers
 
             PreviousState = CurrentState;
             CurrentState = newState;
-            Debug.Log("Set from state: " + PreviousState + " to state: " + CurrentState);
+            Debug.Log("Set GAME STATE from: " + PreviousState + " to state: " + CurrentState);
 
             if (!stateHandlers.ContainsKey(CurrentState))
             {
-                Debug.LogWarning("No event handler for state: " + CurrentState);
+                Debug.LogWarning("No event handler for GAME state: " + CurrentState);
                 return;
             }
 
-            stateHandlers[CurrentState]();
+            stateHandlers[CurrentState]();  
+
+            if (MessageBus.IsSubscribed(CurrentState))
+            {
+                MessageBus.TriggerEvent(CurrentState);
+            }          
         }
     }
 }

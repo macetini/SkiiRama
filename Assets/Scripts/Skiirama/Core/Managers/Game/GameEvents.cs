@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Skiirama.Core.Common.Events
+namespace Assets.Scripts.Skiirama.Core.Managers.Game
 {
     public class GameEvents
     {

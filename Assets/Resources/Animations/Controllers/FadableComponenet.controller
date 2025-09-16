@@ -7,7 +7,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: FadeIn
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7178583961187400471}
   m_Solo: 0
@@ -124,7 +127,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 7178583961187400471}
-    m_Position: {x: 530, y: -40, z: 0}
+    m_Position: {x: 530, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4383562524597053226}
     m_Position: {x: 270, y: 140, z: 0}

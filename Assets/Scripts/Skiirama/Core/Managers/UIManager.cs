@@ -11,7 +11,7 @@ namespace Assets.Scripts.Skiirama.Core.Managers
         internal void MainStateEventHandler()
         {
             Debug.LogFormat("{0} : Main State Event Handler", name);            
-            rootComponent.ShowMainMenu();
+            rootComponent.OnMainState();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Skiirama.Core.UI.Common;
 using UnityEngine;
 
@@ -11,11 +12,27 @@ namespace Assets.Scripts.Skiirama.Core.UI.Items
         [SerializeField]
         private FadableComponent mainMenuComponent;
 
-        internal void ShowMainMenu()
+        void OnEnable()
         {
-            Debug.Log("Show main menu.");
-            loadingComponent.FadeIn();
+            loadingComponent.FadeInAnimationFinishedEvent += LoadingFadeInFinishedEventHandler;
+        }
+
+        void OnDisable()
+        {
+            loadingComponent.FadeInAnimationFinishedEvent -= LoadingFadeInFinishedEventHandler;
+        }
+
+        private void LoadingFadeInFinishedEventHandler()
+        {
+            Debug.Log("Loading component fade in finished.");
+            //loadingComponent.FadeOut();
             //mainMenuComponent.FadeIn();
+        }
+
+        internal void OnMainState()
+        {
+            Debug.Log("Loading component fade in.");
+            loadingComponent.FadeIn();
         }
     }
 }

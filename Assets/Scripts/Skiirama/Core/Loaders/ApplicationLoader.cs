@@ -7,12 +7,13 @@ namespace Assets.Scripts.Skiirama.Core.Loaders
 {
     public class ApplicationLoader : MonoBehaviour
     {
+        private const string APPLICATION_SCENE_NAME = "Application";
+        
         [SerializeField]
         private LoadingComponent loadingComponent;
 
         private AsyncOperation asyncLoad;
 
-        private const string APPLICATION_SCENE_NAME = "Application";
 
         void Start()
         {
